@@ -18,8 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 - a.21308051280373@cbtis128.edu.mx
 
 ## Links de Referencia
-- Documento de Github: [https://drive.google.com/file/d/1p0bEehsZnFB0TvBkwz6rbJE8oyVkbv23/view](https://github.com/nava128/UII_Act3_Drawer.git)
-- Ejemplos: https://medium.com/flutter-espa%C3%B1a/desaf%C3%ADos-con-flutter-container-38842d23e2b7
+- YouTube: https://www.youtube.com/watch?v=uK27aIW2Cxc
 
 ## Resultado de la aplicacion
 ![image](https://github.com/DylanLozanoAvelar/U2-A8-Drawer/assets/143743272/b2e61bce-97a4-4f76-9fca-85f7b6684a72)
