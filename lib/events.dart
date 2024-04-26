@@ -1,4 +1,11 @@
+import 'dart:math';
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 
 class EventsPage extends StatefulWidget {
   @override
@@ -6,58 +13,47 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
+  Uint8List? imageByteData;
+  void _getImage() async {
+    Uint8List data = (await rootBundle.load("assets/aceite-lubricante.png"))
+        .buffer
+        .asUint8List();
+
+    setState(() {
+      print(data);
+      imageByteData = data;
+    });
+  }
+
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getImage();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(40),
-              width: 320,
-              height: 90,
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                color: Color(0xff00771a), //blue
-                borderRadius: BorderRadius.circular(45),
-              ),
-              child: Container(
-                width: 210,
-                height: 90,
-                decoration: BoxDecoration(
-                  color: Color(0xff009720), //light blue
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(45),
-                    bottomLeft: Radius.circular(45),
-                  ),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  'Navidad',
-                  style: TextStyle(
-                    fontSize: 32,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: Text(
-                'Dylan Lozano Avelar',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff000000),
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(15),
-              child: Text("Desafío Mat. 21308051280373",
-                  style: TextStyle(fontSize: 20)),
-            ),
-          ],
+        child: Image.memory(
+          imageByteData!,
+          fit: BoxFit.contain,
+          frameBuilder: (context, child, frame, loaded) {
+            if (loaded) {
+              return child;
+            }
+            return AnimatedOpacity(
+              child: child,
+              opacity: frame == null ? 0 : 1,
+              duration: Duration(seconds: 5),
+              curve: Curves.easeOut,
+            );
+          },
+          errorBuilder: (context, exception, stackTrace) {
+            return Center(
+              child: Text("Something Wronw!"),
+            );
+          },
         ),
       ),
     );

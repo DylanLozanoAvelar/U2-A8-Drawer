@@ -18,11 +18,11 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
         children: [
           Container(
             margin: EdgeInsets.only(bottom: 10),
-            height: 70,
+            height: 100,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: AssetImage('assets/images/profile1.jpg'),
+                image: AssetImage('assets/profile1.jpg'),
               ),
             ),
           ),

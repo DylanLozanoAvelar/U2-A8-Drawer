@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:lozanodrawer/privacy_policy.dart';
-import 'package:lozanodrawer/send_feedback.dart';
-import 'package:lozanodrawer/settings.dart';
 import 'contacts.dart';
 import 'dashboard.dart';
 import 'events.dart';
 import 'my_drawer_header.dart';
-import 'notes.dart';
-import 'notifications.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,21 +39,11 @@ class _HomePageState extends State<HomePage> {
       container = ContactsPage();
     } else if (currentPage == DrawerSections.events) {
       container = EventsPage();
-    } else if (currentPage == DrawerSections.notes) {
-      container = NotesPage();
-    } else if (currentPage == DrawerSections.settings) {
-      container = SettingsPage();
-    } else if (currentPage == DrawerSections.notifications) {
-      container = NotificationsPage();
-    } else if (currentPage == DrawerSections.privacy_policy) {
-      container = PrivacyPolicyPage();
-    } else if (currentPage == DrawerSections.send_feedback) {
-      container = SendFeedbackPage();
     }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff003d02),
-        title: Text("Drawer Pages Lozano0373",
+        title: Text("DrawerPages Lozano0373",
             style: TextStyle(color: Colors.white)),
         iconTheme: IconThemeData(color: Color(0xffffffff)),
       ),
@@ -86,24 +71,12 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         // shows the list of menu drawer
         children: [
-          menuItem(1, "Aterrizaje", Icons.place_outlined,
+          menuItem(1, "ImageRepeat.repeat", Icons.image,
               currentPage == DrawerSections.dashboard ? true : false),
-          menuItem(2, "Contactos", Icons.people_alt_outlined,
+          menuItem(2, "Image.assets", Icons.archive_sharp,
               currentPage == DrawerSections.contacts ? true : false),
-          menuItem(3, "Redondeado", Icons.adjust_rounded,
+          menuItem(3, "Image.memory", Icons.memory,
               currentPage == DrawerSections.events ? true : false),
-          menuItem(4, "Notas", Icons.notes,
-              currentPage == DrawerSections.notes ? true : false),
-          Divider(),
-          menuItem(5, "Contenedor Curvo", Icons.rectangle_rounded,
-              currentPage == DrawerSections.settings ? true : false),
-          menuItem(6, "Notificaciones", Icons.notifications_outlined,
-              currentPage == DrawerSections.notifications ? true : false),
-          Divider(),
-          menuItem(7, "Fondo con Degradado", Icons.palette_outlined,
-              currentPage == DrawerSections.privacy_policy ? true : false),
-          menuItem(8, "Textos con Estilos", Icons.text_fields,
-              currentPage == DrawerSections.send_feedback ? true : false),
         ],
       ),
     );
@@ -122,16 +95,6 @@ class _HomePageState extends State<HomePage> {
               currentPage = DrawerSections.contacts;
             } else if (id == 3) {
               currentPage = DrawerSections.events;
-            } else if (id == 4) {
-              currentPage = DrawerSections.notes;
-            } else if (id == 5) {
-              currentPage = DrawerSections.settings;
-            } else if (id == 6) {
-              currentPage = DrawerSections.notifications;
-            } else if (id == 7) {
-              currentPage = DrawerSections.privacy_policy;
-            } else if (id == 8) {
-              currentPage = DrawerSections.send_feedback;
             }
           });
         },
@@ -169,8 +132,4 @@ enum DrawerSections {
   contacts,
   events,
   notes,
-  settings,
-  notifications,
-  privacy_policy,
-  send_feedback,
 }
